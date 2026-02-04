@@ -1,0 +1,389 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+/* ================= BASE ================= */
+.eco-hero-quiz {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.quiz-card {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* ================= HEADER ================= */
+.quiz-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5rem;
+}
+
+.quiz-progress-indicator {
+  font-family: "Lilita One", sans-serif;
+  padding: 0.35rem 1.1rem;
+  background: #e2e2e2;
+  border-radius: 6px;
+  font-weight: 900;
+  color: #363636;
+}
+
+/* ================= CONTENT ================= */
+.quiz-content {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+}
+
+.quiz-state {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.quiz-state.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ================= BODY ================= */
+.quiz-body {
+  height: 100%;
+  overflow-y: auto;
+  padding: 0 1rem;
+  scrollbar-gutter: stable;
+}
+
+/* ================= FOOTER ================= */
+.quiz-footer {
+  min-height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 3.75rem;
+  gap: 3rem;
+}
+
+/* ================= TÍTULO ================= */
+.quiz-title {
+  font-size: clamp(2rem, 5vw, 5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: #000;
+  text-align: left;
+}
+
+.quiz-title span {
+  display: block;
+}
+
+.eco-green {
+  color: green;
+}
+
+.quiz-description {
+  max-width: 600px;
+  color: #363636;
+  padding: 0.5rem;
+}
+
+/* ================= PERGUNTAS ================= */
+.question-text {
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #000;
+}
+
+.answers-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  padding: 0;
+}
+
+.answer-option {
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  background: #ebebeb;
+  border: 2px solid transparent;
+  cursor: pointer;
+  color: #000;
+  font-size: 0.8rem;
+  transition: 0.2s ease;
+}
+
+.answer-option:hover {
+  background: #e1e1e1;
+}
+
+.answer-option.selected {
+  background: #e6f7ef;
+  border-color: #0dbf6f;
+}
+
+/* ================= BOTÕES ================= */
+.quiz-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.quiz-btn i {
+  transition: transform 0.3s ease;
+}
+
+.quiz-btn:hover i {
+  transform: translateX(0.4rem);
+}
+
+.quiz-btn-primary {
+  background: green;
+  color: #fff;
+}
+
+.quiz-btn-secondary {
+  background: #e2e2e2;
+  color: #000;
+}
+
+.quiz-btn.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* ================= SCROLLBAR ================= */
+/* Firefox */
+.quiz-body {
+  scrollbar-width: thin;
+  scrollbar-color: #0dbf6f #f1f1f1;
+}
+
+/* Chrome, Edge, Safari */
+.quiz-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.quiz-body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.quiz-body::-webkit-scrollbar-thumb {
+  background-color: #0dbf6f;
+  border-radius: 10px;
+  border: 2px solid #f1f1f1;
+}
+
+.quiz-body::-webkit-scrollbar-thumb:hover {
+  background-color: #0aa861;
+}
+
+/* ================= RESULTADO ================= */
+.quiz-state.quiz-result {
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.quiz-result .quiz-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.result-icon-wrapper {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: #e6f7ef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 6rem;
+  color: #0dbf6f;
+  box-shadow: 0 8px 20px rgba(13, 191, 111, 0.25);
+}
+
+@keyframes trophy-pop {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.quiz-result.active .result-icon-wrapper {
+  animation: trophy-pop 0.5s ease;
+}
+
+.result-score {
+  font-family: "Lilita One", sans-serif;
+  font-size: 2.5rem;
+  color: #000;
+}
+
+.result-score .score-total {
+  color: #777;
+}
+
+.result-percentage {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0dbf6f;
+}
+
+.result-message {
+  max-width: 500px;
+  font-size: 0.9rem;
+  color: #363636;
+  padding: 0 1rem;
+}
+
+.quiz-result .quiz-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* =========================
+   RESPONSIVIDADE
+   ========================= */
+@media (max-width: 900px) {
+
+  .eco-hero-quiz {
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+  }
+
+  .quiz-card {
+    width: 100%;
+    max-width: 700px;
+    height: 80vh;
+    max-height: 450px;
+  }
+
+  .quiz-content {
+    flex: 1;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .quiz-state {
+    grid-template-rows: 1fr auto;
+  }
+
+  .quiz-body {
+    overflow-y: auto;
+    padding: 1rem;
+  }
+
+  .quiz-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    text-align: center;
+  }
+
+  .quiz-description {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .quiz-footer {
+    padding-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .answers-container {
+    gap: 0.75rem;
+  }
+
+  .answer-option {
+    font-size: 0.75rem;
+    padding: 0.7rem 0.9rem;
+  }
+
+  .quiz-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .quiz-card {
+    height: 65vh;
+    max-height: 450px;
+    border-radius: 5px;
+  }
+
+  .quiz-title {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+  }
+
+  .quiz-description {
+    font-size: 0.85rem;
+  }
+
+  .question-text {
+    font-size: 0.9rem;
+  }
+
+  .quiz-footer {
+    padding-bottom: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .answer-option {
+    font-size: 0.7rem;
+    padding: 0.65rem 0.85rem;
+  }
+
+  .quiz-btn {
+    font-size: 0.85rem;
+    padding: 0.55rem 1rem;
+  }
+
+  .result-icon-wrapper {
+    width: 120px;
+    height: 120px;
+    font-size: 4.5rem;
+  }
+
+  .result-score {
+    font-size: 2rem;
+  }
+
+  .result-percentage {
+    font-size: 1rem;
+  }
+
+  .result-message {
+    font-size: 0.85rem;
+    padding: 0 0.5rem;
+  }
+}

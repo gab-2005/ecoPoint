@@ -1,102 +1,140 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const $startGameButton = document.querySelector('.start-quiz');
-    const $questionsContainer = document.querySelector('.questions-container');
-    const $answersContainer = document.querySelector('.answers-container');
-    const $questionText = document.querySelector('.question');
-    const $nextQuestionButton = document.querySelector('.next-question');
+document.addEventListener('DOMContentLoaded', async () => {
 
-    let currentQuestionIndex = 0;
-    let totalCorrect = 0;
+  /* ================= ELEMENTOS ================= */
+  const states = {
+    intro: document.querySelector('.quiz-intro'),
+    questions: document.querySelector('.quiz-questions'),
+    result: document.querySelector('.quiz-result')
+  };
 
-    $startGameButton.addEventListener('click', startGame);
-    $nextQuestionButton.addEventListener('click', displayNextQuestion);
+  const currentQuestionEl = document.querySelector('.current-question');
+  const totalQuestionsEl = document.querySelector('.total-questions');
+  const questionTextEl = document.querySelector('.question-text');
+  const answersContainer = document.querySelector('.answers-container');
 
-    function startGame() {
-        console.log('Iniciando quiz...', questions); //Agora aparecerá
-        $startGameButton.classList.add('hide');
-        $questionsContainer.classList.remove('hide');
-        displayNextQuestion();
-    }
+  const startBtn = document.querySelector('.start-quiz');
+  const prevBtn = document.querySelector('.prev-question');
+  const nextBtn = document.querySelector('.next-question');
+  const restartBtn = document.querySelector('.restart-quiz');
 
+  /* ================= ESTADO ================= */
+  let questions = [];
+  let currentIndex = 0;
+  let userAnswers = [];
+  let score = 0;
 
+  /* ================= API ================= */
+  try {
+    const apiUrl = (typeof BASE_URL !== 'undefined' ? BASE_URL : '') + '/api/quizController.php';
+    const res = await fetch(apiUrl);
+    if (!res.ok) throw new Error('Erro ao carregar perguntas');
 
-    function displayNextQuestion() {
-        resetState();
+    questions = await res.json();
+    if (!questions.length) throw new Error('Nenhuma pergunta encontrada');
 
-        if (questions.length === currentQuestionIndex) {
-            return finishGame();
-        }
+    userAnswers = new Array(questions.length).fill(null);
+    totalQuestionsEl.textContent = questions.length;
 
-        $questionText.textContent = questions[currentQuestionIndex].question;
+  } catch (err) {
+    states.intro.innerHTML = `
+      <p class="quiz-description" style="color:#e74c3c">${err.message}</p>
+      <button class="quiz-btn quiz-btn-primary" onclick="location.reload()">Tentar novamente</button>
+    `;
+    return;
+  }
 
-        questions[currentQuestionIndex].answers.forEach(answer => {
-            const newAnswer = document.createElement('button');
-            newAnswer.classList.add('button', 'answer');
-            newAnswer.textContent = answer.text;
+  /* ================= FUNÇÕES ================= */
+  function showState(name) {
+    Object.values(states).forEach(s => s.classList.remove('active'));
+    states[name].classList.add('active');
+  }
 
-            if (answer.correct) {
-                newAnswer.dataset.correct = answer.correct;
-            }
+  function renderQuestion(index) {
+    currentIndex = index;
+    const q = questions[index];
 
-            newAnswer.addEventListener('click', selectAnswer);
-            $answersContainer.appendChild(newAnswer);
-        });
-    }
+    currentQuestionEl.textContent = index + 1;
+    questionTextEl.textContent = q.question;
+    answersContainer.innerHTML = '';
 
+    q.answers.forEach((answer, i) => {
+      const option = document.createElement('div');
+      option.className = 'answer-option';
+      if (userAnswers[index] === i) option.classList.add('selected');
 
+      option.textContent = answer.text;
+      option.addEventListener('click', () => selectAnswer(i));
 
-    function resetState() {
-        while ($answersContainer.firstChild) {
-            $answersContainer.removeChild($answersContainer.firstChild);
-        }
-        $nextQuestionButton.classList.add('hide');
-    }
+      answersContainer.appendChild(option);
+    });
 
+    updateNav();
+  }
 
+  function selectAnswer(i) {
+    userAnswers[currentIndex] = i;
+    renderQuestion(currentIndex);
+  }
 
-    function selectAnswer(event) {
-        const answerClicked = event.target;
+  function updateNav() {
+    prevBtn.classList.toggle('disabled', currentIndex === 0);
+    nextBtn.classList.toggle('disabled', userAnswers[currentIndex] === null);
 
-        if (answerClicked.dataset.correct) {
-            totalCorrect++;
-        }
+    nextBtn.innerHTML = currentIndex === questions.length - 1
+      ? `<span>Finalizar</span><i class="fas fa-check"></i>`
+      : `<span>Próxima</span><i class="fas fa-arrow-right"></i>`;
+  }
 
-        document.querySelectorAll('.answer').forEach(button => {
-            button.classList.add(button.dataset.correct ? 'correct' : 'incorrect');
-            button.disabled = true;
-        });
+  function showResult() {
+    score = userAnswers.reduce((acc, ans, i) => {
+      if (ans !== null && questions[i].answers[ans].correct) acc++;
+      return acc;
+    }, 0);
 
-        $nextQuestionButton.classList.remove('hide');
-        currentQuestionIndex++;
-    }
+    const percent = Math.round((score / questions.length) * 100);
 
+    document.querySelector('.score-value').textContent = score;
+    document.querySelector('.score-total').textContent = `/ ${questions.length}`;
+    document.querySelector('.result-percentage').textContent = `${percent}%`;
 
-    
-    function finishGame() {
-        const totalQuestion = questions.length;
-        const performance = Math.floor(totalCorrect * 100 / totalQuestion);
-        let message = '';
+    const msg = document.querySelector('.result-message');
+    msg.textContent =
+      percent === 100 ? 'Excelente! Você é um expert!'
+      : percent >= 70 ? 'Muito bem! Ótimo conhecimento!'
+      : percent >= 50 ? 'Bom trabalho!'
+      : 'Continue aprendendo!';
 
-        switch (true) {
-            case (performance < 33):
-                message = '🟢 Iniciante: você está dando os primeiros passos rumo a um planeta mais sustentável. Que tal aprender mais sobre reciclagem e tentar novamente? Cada atitude conta para reduzir o impacto ambiental! 💚';
-                break;
-            case (performance < 67):
-                message = '🔄 Intermediário: você já sabe bastante coisa sobre reciclagem eletrônica! Continue assim — pequenas ações geram grandes impactos positivos no meio ambiente! 🌍';
-                break;
-            case (performance >= 67):
-                message = '🏆 Especialista: parabéns! Você mostra grande conhecimento sobre reciclagem e sustentabilidade. Continue sendo um exemplo e compartilhe essas práticas com outras pessoas! 🤝';
-                break;
-            default:
-                message = 'Erro ao calcular desempenho.';
-        }
+    showState('result');
+  }
 
-        $questionsContainer.innerHTML = `
-            <p class="final-message">
-                Você acertou ${totalCorrect} de ${totalQuestion} questões!<br>
-                <span>${message}</span>
-            </p>
-            <button class="button" onclick="window.location.reload()">Refazer teste</button>
-        `;
-    }
+  /* ================= EVENTOS ================= */
+  startBtn.addEventListener('click', () => {
+    currentIndex = 0;
+    userAnswers.fill(null);
+    showState('questions');
+    renderQuestion(0);
+  });
+
+  prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) renderQuestion(currentIndex - 1);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    if (nextBtn.classList.contains('disabled')) return;
+    currentIndex < questions.length - 1
+      ? renderQuestion(currentIndex + 1)
+      : showResult();
+  });
+
+  restartBtn.addEventListener('click', () => {
+    currentIndex = 0;
+    userAnswers.fill(null);
+    score = 0;
+    currentQuestionEl.textContent = '0';
+    showState('intro');
+  });
+
+  /* ================= INIT ================= */
+  showState('intro');
+  currentQuestionEl.textContent = '0';
 });

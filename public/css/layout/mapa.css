@@ -1,0 +1,188 @@
+/* =======================
+   MAPA - ECO POINT
+   ======================= */
+
+#mapa {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    font-family: 'Inter', sans-serif;
+}
+
+#mapa h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #1e7f5c;
+    margin-bottom: 0.5rem;
+}
+
+#mapa p {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+}
+
+/* =======================
+   MAPA (LEAFLET)
+   ======================= */
+
+#map {
+    width: 100%;
+    height: 420px;
+    border-radius: 16px;
+    margin: 1.5rem 0 2.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+}
+
+/* =======================
+   FORMULÁRIO DE CADASTRO
+   ======================= */
+
+.cadastro {
+    display: flex;
+    justify-content: center;
+}
+
+#caixa {
+    background: #ffffff;
+    width: 100%;
+    max-width: 720px;
+    padding: 2rem;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+#caixa h2 {
+    font-size: 1.5rem;
+    color: #1e7f5c;
+    margin-bottom: 0.5rem;
+}
+
+#caixa h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+#caixa input,
+#caixa textarea {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    margin-bottom: 0.9rem;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#caixa input:focus,
+#caixa textarea:focus {
+    border-color: #1e7f5c;
+    box-shadow: 0 0 0 2px rgba(30, 127, 92, 0.15);
+}
+
+/* =======================
+   CEP + BOTÃO BUSCAR
+   ======================= */
+
+.cep {
+    display: flex;
+    gap: 0.6rem;
+}
+
+#buscar {
+    padding: 0 1.2rem;
+    border: none;
+    border-radius: 10px;
+    background: #1e7f5c;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#buscar:hover {
+    background: #16634a;
+}
+
+/* =======================
+   NÚMERO + COMPLEMENTO
+   ======================= */
+
+.numero-complemento {
+    display: flex;
+    gap: 0.6rem;
+}
+
+.numero-complemento input {
+    flex: 1;
+}
+
+/* =======================
+   BOTÃO SUBMIT
+   ======================= */
+
+#caixa button[type="submit"] {
+    width: 100%;
+    padding: 0.9rem;
+    margin-top: 0.5rem;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #1e7f5c, #2fbf8f);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#caixa button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* =======================
+   MENSAGEM DE RESULTADO
+   ======================= */
+
+#mensagem-resultado {
+    margin-top: 0.8rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* =======================
+   LINKS DE REFERÊNCIA
+   ======================= */
+
+#mapa p a,
+#mapa p {
+    word-break: break-word;
+}
+
+/* =======================
+   RESPONSIVO
+   ======================= */
+
+@media (max-width: 768px) {
+    #map {
+        height: 320px;
+    }
+
+    .cep,
+    .numero-complemento {
+        flex-direction: column;
+    }
+
+    #caixa {
+        padding: 1.5rem;
+    }
+
+    #mapa h1 {
+        font-size: 1.8rem;
+    }
+}

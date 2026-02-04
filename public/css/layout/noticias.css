@@ -1,0 +1,135 @@
+/* =========================
+   SEÇÃO NOTÍCIAS
+   ========================= */
+.sessao-noticias {
+    padding: clamp(4rem, 8vw, 6rem) 0;
+    background: #fafafa;
+}
+
+.sessao-noticias .section-header {
+    max-width: 700px;
+    margin-bottom: 3.5rem;
+}
+
+.section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: green;
+    margin-bottom: 0.75rem;
+}
+
+.section-title {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+}
+
+.section-subtitle {
+    font-size: 0.95rem;
+    opacity: 0.75;
+}
+
+/* GRID */
+.noticias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* CARD */
+.noticia-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.noticia-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+}
+
+/* IMAGEM */
+.noticia-image {
+    position: relative;
+    height: 190px;
+    overflow: hidden;
+}
+
+.noticia-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.noticia-card:hover img {
+    transform: scale(1.05);
+}
+
+/* BADGE */
+.noticia-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: green;
+    color: #fff;
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+/* CONTEÚDO */
+.noticia-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    flex: 1;
+}
+
+.noticia-date {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.noticia-content h3 {
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+.noticia-content p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    line-height: 1.5;
+}
+
+/* LINK */
+.noticia-link {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: green;
+    transition: gap 0.3s ease;
+}
+
+.noticia-link i {
+    transition: transform 0.3s ease;
+}
+
+.noticia-link:hover {
+    gap: 0.7rem;
+}

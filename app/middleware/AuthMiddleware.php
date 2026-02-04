@@ -1,17 +1,21 @@
 <?php
 
-class AuthMiddleware {
-    public static function check() {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
+class AuthMiddleware
+{
+    public static function verificar()
+    {
+        // Rotas que NÃO precisam de login
+        $rotasPublicas = ['login', 'cadastro', 'senha'];
 
-        //Verifica se a sessão do usuário está ativa
-        if (!isset($_SESSION['usuario']) || !isset($_SESSION['usuario']['id'])) {
-            header('Location: /ecoPoint/login');
-            exit();
+        // Se não houver URL, assume login como padrão
+        $url = $_GET['url'] ?? 'login';
+        $controllerAtual = strtolower(explode('/', $url)[0]);
+
+        if (!isset($_SESSION['usuario'])) {
+            if (!in_array($controllerAtual, $rotasPublicas)) {
+                header('Location: ' . BASE_URL . '/login');
+                exit;
+            }
         }
     }
 }
-
-?>

@@ -6,14 +6,17 @@ require_once __DIR__ . '/../../DAO/pontoColetaDAO.php';  //Carregando a classe d
 require_once __DIR__ . '/../middleware/AuthMiddleware.php';
 
 class MapaController extends Controller {
-    public function __construct() {
-        AuthMiddleware::check(); //Verifica se o usuário está logado
-    }
 
+
+
+    public function __construct() {
+        AuthMiddleware::verificar();
+    }
 
     public function index() {
-        $this->view('mapa/index'); //Mostra a view da tela de mapa
+        $this->view('mapa/index');
     }
+
 
 
     public function cadastrarPonto() {

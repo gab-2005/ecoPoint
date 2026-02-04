@@ -19,7 +19,7 @@ document.querySelector('form').addEventListener('submit', function(event) {
     .then(resposta => resposta.json())
     .then(data => {
         if (data.sucesso) {
-            window.location.href = '/ecoPoint/sobre'; //Redireciona para a próxima página
+            window.location.href = '/ecoPoint/home'; //Redireciona para a próxima página
         } else {
             mostrarErro(data.erro); //Exibe erro de login incorreto
         }
