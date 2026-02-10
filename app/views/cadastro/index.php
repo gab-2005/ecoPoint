@@ -21,9 +21,12 @@
 
     <section class="cadastro-formulario">
         <form action="/ecoPoint/cadastro/salvar" method="POST" id="formCadastro">
+            <div class="cadastro-logo">
+                <h1>Cadastro</h1>
+            </div>
 
             <!-- PESSOAL -->
-            <h2 class="titulos"><i class="fa-solid fa-id-card"></i> Informações pessoais</h2>
+            <h2 class="titulos">Informações pessoais</h2>
 
             <section class="grupo-campos">
 

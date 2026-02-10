@@ -28,6 +28,12 @@
       novalidate
       class="form">
 
+       <!-- LOGO / TÍTULO -->
+    <div class="login-logo">
+        <h1>Login</h1>
+    </div>
+
+
     <!-- TÍTULO -->
     <div class="form-titulo">
         <h1 class="titulo-login">Bem-vindo</h1>
@@ -38,8 +44,10 @@
         </p>
     </div>
 
+
     <!-- FORMULÁRIO -->
     <div class="form-conteudo">
+        
 
         <!-- CAMPOS -->
         <div class="form-campos">

@@ -26,7 +26,7 @@ body {
     width: 50%;
     background:
     linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.65)),
-    url("/ecoPoint/public/imagens/imgLogin.jpg") center/cover no-repeat;
+    url("/ecoPoint/public/imagens/imgCadastro.jpg") center/cover no-repeat;
 
     clip-path: polygon(
         0 0,
@@ -51,11 +51,22 @@ body {
     height: 900px;
     width: 100%;
     max-width: 700px;
-    padding: 4rem; /* reduzido */
+    padding: 2rem 5rem; /* reduzido */
     display: flex;
     flex-direction: column;
     gap: 1.4rem;
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+.cadastro-logo {
+    text-align: center;
+}
+
+.cadastro-logo h1 {
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: green; /* verde EcoPoint */
+    text-transform: uppercase;
 }
 
 /* =========================
@@ -168,7 +179,7 @@ body {
     margin-top: auto; /* cola no fundo */
     display: flex;
     justify-content: center;
-    gap: 12px;
+    gap: 32px;
 }
 
 .botoes a {
@@ -176,12 +187,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.65rem 1.2rem;
-    font-size: 0.9rem;
+    padding: 0.75rem 1.4rem;
     font-weight: 800;
     text-decoration: none;
-    gap: 8px;
+    gap: 0.5rem;
     transition: 0.3s ease;
+  
 }
 
 /* ÍCONE */
@@ -220,20 +231,42 @@ body {
 /* =========================
    RESPONSIVO
 ========================= */
-@media (max-width: 1024px) {
+/* =====================================================
+   DESKTOP MENOR / NOTEBOOKS
+   Ajuste tipográfico e espaçamentos
+===================================================== */
+@media (max-width: 1200px) {
+
+    .cadastro-logo h1 {
+        font-size: 2.2rem;
+    }
+
+    #formCadastro {
+        padding: 2.5rem 3rem;
+    }
+
+    .campo label {
+        font-size: 0.65rem;
+    }
+}
+
+/* =====================================================
+   MAC OS / TELAS BAIXAS (MacBook, iMac menor, iPad landscape)
+   Remove imagem antes de quebrar layout
+===================================================== */
+@media (max-height: 800px) {
 
     body {
         overflow-y: auto;
     }
 
-    .cadastro-wrapper {
-        flex-direction: column;
-        height: auto;
+    .cadastro-imagem {
+        display: none;
     }
 
-    .cadastro-imagem {
-        width: 100%;
-        height: 35vh;
+    .cadastro-wrapper {
+        justify-content: center;
+        height: auto;
     }
 
     .cadastro-formulario {
@@ -243,18 +276,83 @@ body {
 
     #formCadastro {
         height: auto;
-        min-height: 900px;
-        padding: 2.5rem 1.5rem;
+        min-height: unset;
+        padding: 2.2rem 2rem;
+    }
+
+    .cadastro-logo h1 {
+        font-size: 2rem;
     }
 }
 
+/* =====================================================
+   TABLET / IPAD
+===================================================== */
+@media (max-width: 900px) {
+
+    body {
+        overflow-y: auto;
+    }
+
+    .cadastro-imagem {
+        display: none;
+    }
+
+    .cadastro-wrapper {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .cadastro-formulario {
+        width: 100%;
+        padding: 2rem 1.5rem;
+        align-items: flex-start;
+    }
+
+    #formCadastro {
+        max-width: 680px;
+        height: auto;
+        padding: 2rem 1.6rem;
+    }
+
+    .cadastro-logo h1 {
+        font-size: 1.9rem;
+    }
+
+    .campo label {
+        font-size: 0.65rem;
+    }
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
 @media (max-width: 600px) {
+
+    #formCadastro {
+        max-width: 100%;
+        padding: 1.6rem 1.2rem;
+        box-shadow: none;
+    }
 
     .grupo-campos {
         grid-template-columns: 1fr;
+        gap: 12px;
     }
 
     .botoes {
         flex-direction: column;
+    }
+
+    .cadastro-logo h1 {
+        font-size: 1.7rem;
+    }
+
+    .campo label {
+        font-size: 0.6rem;
+    }
+
+    .input-icon input {
+        font-size: 12px;
     }
 }
