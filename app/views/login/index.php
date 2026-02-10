@@ -1,89 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eco Point - Login</title>
-    <link rel="shortcut icon" href="/ecoPoint/public/imagens/icone.ico" type="image/x-icon"> <!--Ícones do site-->
-    <link rel="stylesheet" href="/ecoPoint/public/css/login.css"> <!--Código CSS do site todo-->
-    <link rel="stylesheet" href="/ecoPoint/public/css/acesibfeedback.css"> <!--Código CSS do painel de acessibilidade e da caixa de feedback-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"/> <!--Google Material Symbols-->
+
+    <link rel="shortcut icon" href="/ecoPoint/public/imagens/icone.ico">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/ecoPoint/public/css/pages/login.css">
+    <link rel="stylesheet" href="/ecoPoint/public/css/acesibfeedback.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
+
 <body>
+    <div class="login-wrapper">
 
-    
-        <section id="logo">
-            <img src="./public/imagens/logo-ecopoint-dark.png" alt="imagem da logo aqui" class="imagem-logo">
-            <p class="texto-logo">Conecte-se para fazer a diferença</p>
-        </section>
-    <div id="conteudo">
-        <form action="/ecoPoint/login/autenticar" method="POST" autocomplete="on" target="_blank" novalidate class="form">
-            <?php if (isset($_SESSION['erro_login'])): ?>
-            <div id="mensagemErro" style="color: white; background-color: #d9534f; padding: 10px; border-radius: 5px; margin-top: 15px; text-align: center;">
-            <?= $_SESSION['erro_login'] ?>
+    <!-- ÁREA DO FORMULÁRIO -->
+    <section class="login-form-area">
+
+    <form action="/ecoPoint/login/autenticar"
+      method="POST"
+      autocomplete="on"
+      novalidate
+      class="form">
+
+    <!-- TÍTULO -->
+    <div class="form-titulo">
+        <h1 class="titulo-login">Bem-vindo</h1>
+        <p class="subtitulo-login">
+            Você está prestes a continuar algo importante. A EcoPoint existe para transformar
+            consciência ambiental em ação prática. Ao acessar sua conta, você segue ajudando
+            a reduzir impactos ambientais e a construir um futuro mais equilibrado.
+        </p>
+    </div>
+
+    <!-- FORMULÁRIO -->
+    <div class="form-conteudo">
+
+        <!-- CAMPOS -->
+        <div class="form-campos">
+            <div class="input-box">
+                <i class="fas fa-user"></i>
+                <input type="text"
+                       name="login"
+                       id="usuario"
+                       placeholder="Usuário"
+                       maxlength="8">
             </div>
-            <?php unset($_SESSION['erro_login']); ?>
-            <?php else: ?>
-            <div id="mensagemErro" style="display: none; color: white; background-color: #d9534f; padding: 10px; border-radius: 5px; margin-top: 15px; text-align: center;"></div>
-            <?php endif; ?>
-            
 
-            <label for="usuario" hidden>Login</label>
-            <input type="text" id="usuario" name="login" placeholder="Usuário" maxlength="8" size="31">
+            <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password"
+                       name="senha"
+                       id="senha"
+                       placeholder="Senha"
+                       minlength="6"
+                       maxlength="10">
+            </div>
+        </div>
 
-            <label for="senha" hidden>Senha</label>
-            <input type="password" id="senha" name="senha" placeholder="Senha" minlength="6" maxlength="10" size="31">
-            
-            <button type="submit" id="botao-entrar" name="entrar">
-                Entrar
-            </button>
-            <button type="button"  id="botao-criar-conta" name="criarConta" onclick="window.location.href='<?= BASE_URL ?>/cadastro'">
-                Criar uma conta
-            </button>
-            
-            <p><a href="<?= BASE_URL ?>/senha" target="_self">Esqueci minha senha</a></p>
-            <p><a href="<?= BASE_URL ?>/home">Voltar à tela inicial</a></p>
-    
-        </form>
+        <!-- MENSAGEM -->
+         <div class="grupo-mensagem">
+            <div id="mensagemErro" class="mensagem-erro">
+                <?php
+                if (isset($_SESSION['erro_login'])) {
+                    echo $_SESSION['erro_login'];
+                    unset($_SESSION['erro_login']);
+                }
+                ?>
+            </div>
+        </div>
 
-        <div id="mensagemErro" style="display: none; color: white; background-color: #d9534f; padding: 10px; border-radius: 5px; margin-top: 15px; text-align: center;">
-        <!--A mensagem será preenchida via JavaScript-->
+       
+
+        <!-- BOTÕES -->
+        <div class="form-botoes">
+            <a id="botao-entrar">
+                Entrar <i class="fas fa-arrow-right"></i>
+            </a>
+
+            <a id="botao-criar-conta"
+               onclick="window.location.href='<?= BASE_URL ?>/cadastro'">
+                Criar conta
+            </a>
+        </div>
+
+        <!-- LINKS -->
+        <div class="form-links">
+            <a href="<?= BASE_URL ?>/senha">Esqueci minha senha</a>
         </div>
 
     </div>
-    <!--Menu de Acessibilidade-->
-    <div id="menu-acessibilidade" class="menu-acessibilidade">
-        <div class="btnAbre" onclick="toggleAcessMenu()">
-        <span class="material-symbols-outlined">accessible_forward</span>
-        </div>
-        <div id="painel-acessibilidade" class="painel-acessibilidade">
-            <button id="increaseFont">Aumentar Fonte</button>
-            <button id="decreaseFont">Diminuir Fonte</button>
-            <button onclick="mudarContraste()">Alterar Contraste</button>
-            <button onclick="lerConteudo()">Ler Conteúdo</button>
-            <button onclick="pararLeitura()">Parar Leitura</button>
-            <br>
-            <label for="feedback">Feedback de acessibilidade:</label>
-            <textarea id="feedback" rows="4" placeholder="Tem um problema de acessibilidade? Nós de um Feedback"></textarea>
-            <button onclick="enviarFeedbackAceb()">Enviar Feedback</button>
-        </div>
-    </div>
-    <!--Menu de Feedback-->
-    <div id="menu-feedback" class="menu-feedback">
-        <div class="btnFeedback" onclick="toggleFeedbackMenu()">
-        <span class="material-symbols-outlined">feedback</span>
-        </div>
-        <div id="painel-feedback" class="painel-feedback">
-            <h3>Deixe seu Feedback</h3>
-            <p>Nosso site visa a mudança, nada melhor do que você nós ajudar de pertinho.
-            Abaixo escreva um feedback sobre nosso site e sua experiência dentro dele.
-            Não se esqueça, pode fazer isso quando e quantas vezes quiser!!</p>
-            <textarea id="feedback-text" rows="5" placeholder="Digite aqui seu feedback..."></textarea>
-            <button onclick="enviarFeedback()">Enviar Feedback</button>
+
+    <!-- DESENVOLVEDORES -->
+    <div class="form-dev">
+        <h3 class="titulo-dev">Desenvolvido por</h3>
+
+        <div class="dev-integrantes">
+            <div class="dev-card">
+                <img src="/ecoPoint/public/imagens/imgAuth.jpg">
+                <span>Gabriel Araújo</span>
+            </div>
+
+            <div class="dev-card">
+                <img src="/ecoPoint/public/imagens/imgAuth.jpg">
+                <span>Alessandra</span>
+            </div>
+
+            <div class="dev-card">
+                <img src="/ecoPoint/public/imagens/imgAuth.jpg">
+                <span>Eric</span>
+            </div>
+
+            <div class="dev-card">
+                <img src="/ecoPoint/public/imagens/imgAuth.jpg">
+                <span>Bryan</span>
+            </div>
         </div>
     </div>
-    
-    <script src="/ecoPoint/public/js/validacaologin.js"></script> <!--Código JS da validação do site todo-->
-    <script src="/ecoPoint/public/js/acessibfeedback.js"></script> <!--Código JS do painel de acessibilidade e da caixa de feedback-->
+
+</form>
+
+
+     
+
+    </section>
+
+    <!-- ÁREA DA IMAGEM -->
+    <section class="login-imagem"></section>
+
+</div>
+
+
+
+
+
+<script src="/ecoPoint/public/js/validacaologin.js"></script>
+<script src="/ecoPoint/public/js/acessibfeedback.js"></script>
+
 </body>
 </html>

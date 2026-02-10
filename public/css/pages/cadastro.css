@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700;800;900&display=swap');
+
+/* =========================
+   RESET
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Comfortaa", sans-serif;
+}
+
+body {
+    overflow: hidden;
+}
+
+/* =========================
+   LAYOUT PRINCIPAL
+========================= */
+.cadastro-wrapper {
+    display: flex;
+    height: 100vh;
+}
+
+.cadastro-imagem {
+    width: 50%;
+    background:
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.65)),
+    url("/ecoPoint/public/imagens/imgLogin.jpg") center/cover no-repeat;
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        85% 100%,
+        0 100%
+    );
+}
+
+.cadastro-formulario {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+}
+
+/* =========================
+   FORM CARD (900px FIXO)
+========================= */
+#formCadastro {
+    height: 900px;
+    width: 100%;
+    max-width: 700px;
+    padding: 4rem; /* reduzido */
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* =========================
+   GRID CAMPOS
+========================= */
+.grupo-campos {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px 32px; /* compacto */
+}
+
+/* =========================
+   CAMPO PADRÃO
+========================= */
+.campo {
+    display: flex;
+    flex-direction: column;
+}
+
+.campo label {
+    font-size: 0.7rem;
+    margin-bottom: 2px;
+}
+
+/* Label fake CEP */
+.label-fake {
+    visibility: hidden;
+    height: 0.7rem;
+    margin-bottom: 2px;
+}
+
+/* =========================
+   INPUT PROFISSIONAL COMPACTO
+========================= */
+.input-icon {
+    position: relative;
+}
+
+.input-icon i {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #808080;
+    pointer-events: none;
+    transition: 0.2s;
+}
+
+.input-icon input {
+    width: 100%;
+    height: 40px; /* compacto */
+    padding: 10px 12px 10px 38px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.input-icon input:focus {
+    outline: none;
+    border-color: #2e7d32;
+}
+
+/* =========================
+   CAMPOS READONLY (CEP)
+========================= */
+.input-icon input[readonly] {
+    background-color: #eef1ef;
+    border-color: #d0d0d0;
+    color: #777;
+    cursor: not-allowed;
+}
+
+.input-icon input[readonly]::placeholder {
+    color: #999;
+}
+
+.input-icon input[readonly] ~ i {
+    color: #b0b0b0;
+}
+
+/* =========================
+   BOTÃO CEP COMPACTO
+========================= */
+.campo-botao {
+    display: flex;
+    flex-direction: column;
+}
+
+.campo-botao button {
+    width: 100%;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    background: #2e7d32;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.campo-botao button:hover {
+    filter: brightness(1.05);
+}
+
+/* =========================
+   BOTÕES FINAIS
+========================= */
+.botoes {
+    margin-top: auto; /* cola no fundo */
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.botoes a {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.65rem 1.2rem;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-decoration: none;
+    gap: 8px;
+    transition: 0.3s ease;
+}
+
+/* ÍCONE */
+.botoes a i {
+    transition: transform 0.3s ease;
+}
+
+/* CADASTRAR */
+.btn-submit {
+    background: #2e7d32;
+    color: white;
+}
+
+.btn-submit:hover i {
+    transform: translateX(6px);
+}
+
+.btn-submit:hover {
+    filter: brightness(1.05);
+}
+
+/* VOLTAR */
+.btn-voltar {
+    background: #e7e7e7;
+    color: #000;
+}
+
+.btn-voltar:hover i {
+    transform: translateX(-6px);
+}
+
+.btn-voltar:hover {
+    background: #dadada;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+@media (max-width: 1024px) {
+
+    body {
+        overflow-y: auto;
+    }
+
+    .cadastro-wrapper {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .cadastro-imagem {
+        width: 100%;
+        height: 35vh;
+    }
+
+    .cadastro-formulario {
+        width: 100%;
+        padding: 2rem;
+    }
+
+    #formCadastro {
+        height: auto;
+        min-height: 900px;
+        padding: 2.5rem 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .grupo-campos {
+        grid-template-columns: 1fr;
+    }
+
+    .botoes {
+        flex-direction: column;
+    }
+}

@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     nextBtn.classList.toggle('disabled', userAnswers[currentIndex] === null);
 
     nextBtn.innerHTML = currentIndex === questions.length - 1
-      ? `<span>Finalizar</span><i class="fas fa-check"></i>`
+      ? `<span>Finalizar</span><i class="fas fa-arrow-right"></i>`
       : `<span>Próxima</span><i class="fas fa-arrow-right"></i>`;
   }
 

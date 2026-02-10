@@ -14,7 +14,7 @@
   display: flex;
   flex-direction: column;
   background: #fff;
-  border-radius: 5px;
+  border-radius: 0px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
@@ -29,7 +29,7 @@
   font-family: "Lilita One", sans-serif;
   padding: 0.35rem 1.1rem;
   background: #e2e2e2;
-  border-radius: 6px;
+  border-radius: 0px;
   font-weight: 900;
   color: #363636;
 }
@@ -115,7 +115,7 @@
 
 .answer-option {
   padding: 0.85rem 1rem;
-  border-radius: 8px;
+  border-radius: 0px;
   background: #ebebeb;
   border: 2px solid transparent;
   cursor: pointer;
@@ -139,9 +139,11 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.7rem 1.4rem;
-  border-radius: 5px;
+  border-radius: 0px;
   font-weight: 600;
   transition: 0.3s;
+  cursor: pointer;
+
 }
 
 .quiz-btn i {
@@ -181,12 +183,12 @@
 
 .quiz-body::-webkit-scrollbar-track {
   background: #f1f1f1;
-  border-radius: 10px;
+  border-radius: 0px;
 }
 
 .quiz-body::-webkit-scrollbar-thumb {
   background-color: #0dbf6f;
-  border-radius: 10px;
+  border-radius: 0px;
   border: 2px solid #f1f1f1;
 }
 
@@ -338,7 +340,6 @@
   .quiz-card {
     height: 65vh;
     max-height: 450px;
-    border-radius: 5px;
   }
 
   .quiz-title {

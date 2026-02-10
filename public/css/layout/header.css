@@ -157,27 +157,119 @@ a {
     opacity: 0.8;
 }
 
-.eco-btn {
+
+
+
+/* ================= USER DROPDOWN ================= */
+
+.user-menu {
+    position: relative; /* BASE DO ABSOLUTE */
+
+
+}
+
+/* ITEM PADRÃO */
+.menu-item {
+    font-family: "Comfortaa", sans-serif;
     display: flex;
-    align-items:center;
-    background-color: rgb(255, 255, 255);
-    color: #000000;
-    border-radius: 5px;
-    backdrop-filter: blur(1rem); 
+    align-items: center;
     padding: 0.7rem 1.4rem;
+    font-weight: 900;
+    gap: 1rem;
+
+
+
+    background: #ffffff;
+    color: #000000;
+
+    font-size: 1rem;
+    text-decoration: none;
+    border: none;
+
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+/* ÍCONE COLUNA FIXA */
+.menu-item i {
+    width: 22px;
+    text-align: center;
+    color: #000000;
+}
+
+/* BOTÃO PRINCIPAL */
+.menu-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* seta */
+.menu-arrow {
+    margin-left: auto; /* empurra pra direita */
+    font-size: 11px;
+    transition: transform 0.2s ease;
+}
+
+/* quando aberto */
+.user-menu.active .menu-arrow {
+    transform: rotate(180deg);
+}
+.menu-toggle:hover {
+    background: rgb(231, 231, 231);
+
+}
+
+.menu-toggle i {
+    color: #000000;
+}
+
+/* SUBMENU */
+/* SUBMENU */
+.menu-list {
+    position: absolute; /* 👈 ISSO RESOLVE */
+    top: 100%;
+    left: 0;
+
+    width: 100%;
+
+    display: none;
+    flex-direction: column;
+
+    background: #ffffff;
+    overflow: hidden;
+
+
+    z-index: 999; /* 👈 FICA POR CIMA DO HEADER */
+}
+
+/* ABERTO */
+.user-menu.active .menu-list {
+    display: flex;
+}
+
+/* DIVISÓRIA */
+.menu-list .menu-item + .menu-item {
+}
+
+/* HOVER */
+.menu-list .menu-item:hover {
+    background: rgb(231, 231, 231);
+}
+
+/* LOGIN DENTRO DO MENU */
+.menu-user {
+    background: #000000;
     font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    gap: 0.5rem;
 }
 
-.eco-btn i {
-    transition: transform 0.3s ease;
+/* LOGOUT */
+.logout span,
+.logout i {
+    color: #d9534f;
 }
 
-.eco-btn:hover i {
-    transform: translateX(0.4rem);
-}
+
 
 /* =========================
    HERO
@@ -270,7 +362,7 @@ a {
     background-color: green;
     color: #ffffff;
     padding: 0.7rem 1.4rem;
-    border-radius: 5px;
+    border-radius: 0px;
     font-weight: 900;
     transition: all 0.3s ease;
     gap: 0.5rem;
@@ -289,53 +381,6 @@ a {
     transform: translateX(0.4rem);
 }
 
-/* =========================
-   SEÇÃO NOTÍCIAS
-   ========================= */
-.sessao-noticias {
-    padding: clamp(3rem, 8vw, 5rem) 1.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.sessao-noticias h1 {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 2rem;
-}
-
-.card {
-    background: #fff;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-    transition: transform .3s ease, box-shadow .3s ease;
-}
-
-.card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 30px 60px rgba(0,0,0,0.12);
-}
-
-.card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-}
-
-.card-content {
-    padding: 1.5rem;
-}
-
-.card-content p {
-    font-size: 0.9rem;
-    opacity: 0.8;
-}
 
 /* =========================
    MOBILE MENU - SLIDE RIGHT
@@ -409,33 +454,38 @@ body.scrolled .mobile-menu-toggle {
     color: #000;
 }
 
-.mobile-actions {
+/* USUÁRIO NO MOBILE */
+.mobile-user {
     display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
 }
 
-.mobile-login,
-.mobile-register {
-    flex: 1;
-    padding: 0.8rem;
-    border-radius: 10px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-align: center;
-    justify-content: center;
+/* TOPO COM NOME */
+.mobile-user-header {
+    display: flex;
     align-items: center;
+    gap: 0.8rem;
+
+    font-weight: 700;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid #e7e7e7;
 }
 
-.mobile-login {
-    background: green;
-    color: #fff;
+.mobile-user-header i {
+    font-size: 1.1rem;
 }
 
-.mobile-register {
-    background: #e2e2e2;
-    color: #000;
+/* logout vermelho reaproveita */
+.mobile-item.logout {
+    color: #d9534f;
 }
+
+
+
+
+
 
 /* =========================
    RESPONSIVIDADE
@@ -499,6 +549,11 @@ body.scrolled .mobile-menu-toggle {
     .mobile-menu-toggle {
         display: block;
     }
+     /* ESCONDE USER DO HEADER NO MOBILE */
+    .user-menu {
+        display: none;
+    }
+    
 }
 
 @media (max-width: 600px) {
@@ -513,7 +568,7 @@ body.scrolled .mobile-menu-toggle {
 
     .mobile-login,
     .mobile-register {
-        border-radius: 5px;
+        border-radius: 0px;
     }
 
     .eco-hero-eyebrow {

@@ -1,0 +1,134 @@
+/* ========================================================= */
+/* ONGs PARCEIRAS */
+/* ========================================================= */
+
+.sessao-ongs {
+    background: transparent;
+}
+
+/* CONTAINER PRINCIPAL */
+.sessao-ongs .eco-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 4rem 1.25rem;
+    gap: 4rem;
+}
+
+/* ========================================================= */
+/* COLUNA ESQUERDA – TEXTO */
+/* ========================================================= */
+
+.section-header-ongs {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.section-title-ongs {
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.15;
+    color: #1c2f2b;
+    max-width: 420px;
+}
+
+.section-subtitle-ongs {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #566864;
+    max-width: 380px;
+}
+
+/* ========================================================= */
+/* COLUNA DIREITA – LOGOS */
+/* ========================================================= */
+
+.lista-ongs {
+    height: 100%;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 5rem;
+    align-items: center;
+}
+
+/* ITEM */
+.ong-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* LOGO */
+.ong-logo {
+    height: 80px;
+    width: 100%;
+    object-fit: contain;
+    opacity: 0.75;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.ong-logo:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* ========================================================= */
+/* RESPONSIVO – TABLET */
+/* ========================================================= */
+
+@media (max-width: 900px) {
+
+    .sessao-ongs .eco-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 3rem 2rem;
+    }
+
+    .section-header-ongs {
+        align-items: center;
+        text-align: center;
+    }
+
+    .section-title-ongs,
+    .section-subtitle-ongs {
+        max-width: 100%;
+    }
+
+    .lista-ongs {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+    }
+}
+
+/* ========================================================= */
+/* RESPONSIVO – MOBILE */
+/* ========================================================= */
+
+@media (max-width: 600px) {
+
+    .sessao-ongs .eco-container {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .section-title-ongs {
+        font-size: 1.3rem;
+    }
+
+    .section-subtitle-ongs {
+        font-size: 1rem;
+    }
+
+    .lista-ongs {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .ong-logo {
+        height: 55px;
+    }
+}
