@@ -290,8 +290,8 @@ document.addEventListener("DOMContentLoaded", function () {
                    target="_blank"
                    rel="noopener noreferrer"
                    class="card-link">
-                    e
-                    <img src="" alt="">
+                    
+                    <img src="./public/imagens/imgnotDestaque.jpg" alt="">
                     <div class="conteudo">
                         <span class="tag">Destaque</span>
                         <h2>Lixo eletrônico cresce de forma alarmante</h2>
@@ -311,7 +311,7 @@ document.addEventListener("DOMContentLoaded", function () {
                    target="_blank"
                    rel="noopener noreferrer"
                    class="card-link">
-                    <img src="" alt="">
+                    <img src="./public/imagens/imgnotBateria.jpg" alt="">
                     <div class="conteudo">
                         <span class="tag">Tecnologia</span>
                         <h3>Reciclagem de baterias</h3>
@@ -329,7 +329,7 @@ document.addEventListener("DOMContentLoaded", function () {
                    target="_blank"
                    rel="noopener noreferrer"
                    class="card-link">
-                    <img src="" alt="">
+                    <img src="./public/imagens/imgnotPlaca.jpg" alt="">
                     <div class="conteudo">
                         <span class="tag">Sustentabilidade</span>
                         <h3>Placas eletrônicas</h3>
@@ -347,7 +347,7 @@ document.addEventListener("DOMContentLoaded", function () {
                    target="_blank"
                    rel="noopener noreferrer"
                    class="card-link">
-                    <img src="" alt="">
+                    <img src="./public/imagens/imgnotDescarte.jpg" alt="">
                     <div class="conteudo">
                         <span class="tag">Meio Ambiente</span>
                         <h3>Descarte consciente</h3>

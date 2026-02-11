@@ -31,25 +31,24 @@
             <section class="grupo-campos">
 
                 <div class="campo">
-                    <label for="nomecompleto">Nome completo</label>
                     <div class="input-icon">
                         <i class="fa-solid fa-user"></i>
-                        <input type="text" id="nomecompleto" name="nome">
+                        <input type="text" id="nomecompleto" name="nome" placeholder="Nome completo">
                     </div>
                 </div>
 
                 <div class="campo">
-                    <label for="datanascimento">Data de nascimento</label>
+                 
                     <div class="input-icon">
                         <i class="fa-solid fa-cake-candles"></i>
-                        <input type="date" id="datanascimento" name="nascimento">
+                        <input type="date" id="datanascimento" name="nascimento" placeholder="Data de nascimento">
                     </div>
                 </div>
                 <div class="campo">
-                    <label for="cpf">CPF</label>
+                
                     <div class="input-icon">
                         <i class="fa-solid fa-address-card"></i>
-                        <input type="text" id="cpf" name="cpf">
+                        <input type="text" id="cpf" name="cpf" placeholder="CPF">
                     </div>
                 </div>
 
@@ -61,15 +60,13 @@
             <section class="grupo-campos">
 
                 <div class="campo">
-                    <label for="cep">CEP</label>
                     <div class="input-icon">
                         <i class="fa-solid fa-map-pin"></i>
-                        <input type="text" id="cep" name="cep">
+                        <input type="text" id="cep" name="cep"placeholder="CEP">
                     </div>
                 </div>
 
                 <div class="campo campo-botao">
-                    <label class="label-fake">CEP</label>
                 <button type="button" id="buscar">Buscar CEP</button>
             </div>
 
@@ -77,50 +74,50 @@
                 
 
                 <div class="campo">
-                    <label for="rua">Endereço</label>
+                
                     <div class="input-icon">
                         <i class="fa-solid fa-road"></i>
-                        <input type="text" id="rua" name="endereco" readonly>
+                        <input type="text" id="rua" name="endereco" readonly placeholder="Endereço">
                     </div>
                 </div>
 
                 <div class="campo">
-                    <label for="bairro">Bairro</label>
+                
                     <div class="input-icon">
                         <i class="fa-solid fa-tree-city"></i>
-                        <input type="text" id="bairro" name="bairro" readonly>
+                        <input type="text" id="bairro" name="bairro" readonly placeholder="Bairro">
                     </div>
                 </div>
 
                 <div class="campo">
-                    <label for="cidade">Cidade</label>
+                  
                     <div class="input-icon">
                         <i class="fa-solid fa-city"></i>
-                        <input type="text" id="cidade" name="cidade" readonly>
+                        <input type="text" id="cidade" name="cidade" readonly placeholder="Cidade">
                     </div>
                 </div>
 
                 <div class="campo">
-                    <label for="num">Número</label>
+              
                     <div class="input-icon">
                         <i class="fa-solid fa-hashtag"></i>
-                        <input type="text" id="num" name="numero">
+                        <input type="text" id="num" name="numero" placeholder="Numero">
                     </div>
                 </div>
 
                 <div class="campo">
-                    <label for="complemento">Complemento</label>
+                   
                     <div class="input-icon">
                         <i class="fa-solid fa-building"></i>
-                        <input type="text" id="complemento" name="complemento">
+                        <input type="text" id="complemento" name="complemento" placeholder="Complemento ">
                     </div>
                 </div>
 
                 <div class="campo">
-                    <label for="tel">Telefone</label>
+                
                     <div class="input-icon">
                         <i class="fa-solid fa-phone"></i>
-                        <input type="text" id="tel" name="telefone">
+                        <input type="text" id="tel" name="telefone" placeholder="Telefone">
                     </div>
                 </div>
 
@@ -132,33 +129,34 @@
             <section class="grupo-campos">
 
                 <div class="campo">
-                    <label for="campousuario">Usuário</label>
+                    
                     <div class="input-icon">
                         <i class="fa-solid fa-user-tag"></i>
-                        <input type="text" id="campousuario" name="login">
+                        <input type="text" id="campousuario" name="login" placeholder="Usuário">
                     </div>
                 </div>
                   <div class="campo">
-                    <label for="inserirEmail">Email</label>
                     <div class="input-icon">
                         <i class="fa-solid fa-envelope"></i>
-                        <input type="email" id="inserirEmail" name="email">
+                        <input type="email" id="inserirEmail" name="email" placeholder="Email">
                     </div>
                 </div>
 
                 <div class="campo">
-                    <label for="camposenha">Senha</label>
+              
                     <div class="input-icon">
                         <i class="fa-solid fa-key"></i>
-                        <input type="password" id="camposenha" name="senha">
+                        <input type="password" id="camposenha" name="senha"
+                        placeholder="Senha">
                     </div>
                 </div>
 
                 <div class="campo">
-                    <label for="confirmasenha">Confirmar senha</label>
+                
                     <div class="input-icon">
                         <i class="fa-solid fa-shield-halved"></i>
-                        <input type="password" id="confirmasenha" name="confirmasenha">
+                        <input type="password" id="confirmasenha" name="confirmasenha"
+                        placeholder="Confirmar senha">
                     </div>
                 </div>
 

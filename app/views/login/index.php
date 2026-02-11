@@ -87,14 +87,15 @@
 
         <!-- BOTÕES -->
         <div class="form-botoes">
+            
+            <a id="botao-criar-conta"
+               onclick="window.location.href='<?= BASE_URL ?>/cadastro'">
+                Criar conta<i class="fas fa-arrow-right"></i>
+            </a>
             <a id="botao-entrar">
                 Entrar <i class="fas fa-arrow-right"></i>
             </a>
 
-            <a id="botao-criar-conta"
-               onclick="window.location.href='<?= BASE_URL ?>/cadastro'">
-                Criar conta
-            </a>
         </div>
 
         <!-- LINKS -->
@@ -110,22 +111,22 @@
 
         <div class="dev-integrantes">
             <div class="dev-card">
-                <img src="/ecoPoint/public/imagens/imgAuth.jpg">
+                <img src="/ecoPoint/public/imagens/imgAuth.jp">
                 <span>Gabriel Araújo</span>
             </div>
 
             <div class="dev-card">
-                <img src="/ecoPoint/public/imagens/imgAuth.jpg">
+                <img src="/ecoPoint/public/imagens/imgAuth.jp">
                 <span>Alessandra</span>
             </div>
 
             <div class="dev-card">
-                <img src="/ecoPoint/public/imagens/imgAuth.jpg">
+                <img src="/ecoPoint/public/imagens/imgAuth.jp">
                 <span>Eric</span>
             </div>
 
             <div class="dev-card">
-                <img src="/ecoPoint/public/imagens/imgAuth.jpg">
+                <img src="/ecoPoint/public/imagens/imgAuth.jp">
                 <span>Bryan</span>
             </div>
         </div>

@@ -20,6 +20,7 @@ body {
 .cadastro-wrapper {
     display: flex;
     height: 100vh;
+    width: 100%;
 }
 
 .cadastro-imagem {
@@ -51,7 +52,7 @@ body {
     height: 900px;
     width: 100%;
     max-width: 700px;
-    padding: 2rem 5rem; /* reduzido */
+    padding:  4rem 5rem; /* reduzido */
     display: flex;
     flex-direction: column;
     gap: 1.4rem;
@@ -112,16 +113,15 @@ body {
     transform: translateY(-50%);
     color: #808080;
     pointer-events: none;
-    transition: 0.2s;
 }
 
 .input-icon input {
     width: 100%;
-    height: 40px; /* compacto */
-    padding: 10px 12px 10px 38px;
+    height: 46px; /* compacto */
+    padding: 12px 14px 12px 42px;
     border-radius: 8px;
     border: 1px solid #ccc;
-    font-size: 13px;
+    font-size: 1rem;
     transition: 0.2s;
 }
 
@@ -187,7 +187,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.75rem 1.4rem;
+    padding: 0.8rem 1.4rem;
     font-weight: 800;
     text-decoration: none;
     gap: 0.5rem;
